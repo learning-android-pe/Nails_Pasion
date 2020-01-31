@@ -12,34 +12,36 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.lappsmov.nailspasion.utils.NLog
+import com.lappsmov.nailspasion.utils.nCreateDialog
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.alert_validate.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
-class Settings : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = getString(R.string.ajustes)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.ajustes)
+
+        NLog.v("SettingsActivity")
 
         expli_compartir_app.text = "${getString(R.string.compartir)} ${getString(R.string.app_name)} ${getString(R.string.shared_with_friends)}"
 
         btn_validate.setOnClickListener {
-
             if (et_validation.text.length > 2) validationADS(et_validation.text.toString())
             else Toast.makeText(this, getString(R.string.validation), Toast.LENGTH_LONG).show()
-
         }
-
     }
 
     private fun validationADS(code: String) {
+        NLog.v("validationADS code $code")
 
-        val dg = Utils().createDialog(this, R.layout.alert_validate, false)
+        val dg = nCreateDialog(this, R.layout.alert_validate, false)
         dg.show()
 
         dg.tv_validate.text = getString(R.string.validando)
@@ -56,7 +58,7 @@ class Settings : AppCompatActivity() {
 
                     dg.btn_ok_validate.setOnClickListener {
                         dg.dismiss()
-                        startActivity(Intent(this@Settings, MainActivity::class.java)
+                        startActivity(Intent(this@SettingsActivity, MainActivity::class.java)
                             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP))
                     }
                 }
@@ -77,7 +79,7 @@ class Settings : AppCompatActivity() {
 
         var rps = ""
 
-        val queue = Volley.newRequestQueue(this@Settings)
+        val queue = Volley.newRequestQueue(this@SettingsActivity)
         val url = "${Utils().url_server}/validation_ads.php"
         val request = object : StringRequest(Method.POST, url, Response.Listener<String> {
             rps = it

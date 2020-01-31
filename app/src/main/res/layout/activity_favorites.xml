@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     style="@style/padding_activitys"
     android:background="@drawable/background_activity"
-    tools:context=".Favorites">
+    tools:context=".FavoritesActivity">
 
     <ProgressBar
         android:id="@+id/progress_fav"

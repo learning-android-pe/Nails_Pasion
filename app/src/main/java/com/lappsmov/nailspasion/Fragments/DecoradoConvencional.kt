@@ -18,10 +18,10 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.lappsmov.nailspasion.BuildConfig
-import com.lappsmov.nailspasion.MainActivity
-import com.lappsmov.nailspasion.R
-import com.lappsmov.nailspasion.Utils
+import com.lappsmov.nailspasion.*
+import com.lappsmov.nailspasion.adapters.ImagesAdapter
+import com.lappsmov.nailspasion.model.DataImages
+import com.lappsmov.nailspasion.utils.nCreateDialog
 import kotlinx.android.synthetic.main.alert_update.*
 import kotlinx.android.synthetic.main.fragment_decorado_convencional.view.*
 import org.json.JSONArray
@@ -29,7 +29,7 @@ import org.json.JSONObject
 
 class DecoradoConvencional : Fragment() {
 
-    var list_images = ArrayList<Utils.DataImages>()
+    var list_images = ArrayList<DataImages>()
 
     lateinit var view_root: View
     var data_convencional = ""
@@ -53,14 +53,15 @@ class DecoradoConvencional : Fragment() {
                 if (!end_data) {
                     val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                     val elemento_final = layoutManager.findLastVisibleItemPosition()
+                    recyclerView.adapter?.let {
+                        when {
+                            elemento_final == it.itemCount - 10 && !loading -> {
 
-                    when {
-                        elemento_final == recyclerView.adapter!!.itemCount - 10 && !loading -> {
+                                loading = true
+                                page++
 
-                            loading = true
-                            page++
-
-                            getDataServer()
+                                getDataServer()
+                            }
                         }
                     }
                 }
@@ -112,13 +113,17 @@ class DecoradoConvencional : Fragment() {
 
                 if (BuildConfig.VERSION_CODE < bundle_server) {
 
-                    val dg = Utils().createDialog(activity!!, R.layout.alert_update, false)
-                    dg.show()
+                    activity?.let {
+                        val dg = nCreateDialog(it, R.layout.alert_update, false)
+                        dg.show()
 
-                    dg.btn_alert_ok.setOnClickListener {
-                        dg.dismiss()
-                        startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(url_download)))
+                        dg.btn_alert_ok.setOnClickListener {
+                            dg.dismiss()
+                            startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(url_download)))
+                        }
                     }
+
+
                 }
             }
 
@@ -147,7 +152,7 @@ class DecoradoConvencional : Fragment() {
 
                 for (i in 0 until jsonArray.length()) {
                     val jsonObject = jsonArray.getJSONObject(i)
-                    list_images.add(Utils.DataImages(jsonObject.getString("url"), jsonObject.getString("id")))
+                    list_images.add(DataImages(jsonObject.getString("url"), jsonObject.getString("id")))
                 }
             }
 
@@ -158,12 +163,17 @@ class DecoradoConvencional : Fragment() {
             super.onPostExecute(result)
 
             if (loading) {
-                recyclerView_convencional.adapter!!.notifyDataSetChanged()
+                recyclerView_convencional.adapter?.notifyDataSetChanged()
                 loading = false
 
             } else {
                 recyclerView_convencional.layoutManager = GridLayoutManager(activity, resources.getInteger(R.integer.recycler_images))
-                recyclerView_convencional.adapter = Utils.AdapterRecyclerImages(list_images, activity!!)
+                activity?.let {
+                    recyclerView_convencional.adapter = ImagesAdapter(list_images, it){
+
+                    }
+                }
+
             }
             MainActivity.progressbar.visibility = View.GONE
         }

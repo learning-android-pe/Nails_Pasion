@@ -17,12 +17,14 @@ import com.android.volley.toolbox.Volley
 import com.lappsmov.nailspasion.MainActivity
 import com.lappsmov.nailspasion.R
 import com.lappsmov.nailspasion.Utils
+import com.lappsmov.nailspasion.adapters.ImagesAdapter
+import com.lappsmov.nailspasion.model.DataImages
 import kotlinx.android.synthetic.main.fragment_decorado_gel.view.*
 import org.json.JSONArray
 
 class DecoradoGel : Fragment() {
 
-    var list_images = ArrayList<Utils.DataImages>()
+    var list_images = ArrayList<DataImages>()
 
     var data_gel = ""
     lateinit var recyclerView_gel: RecyclerView
@@ -46,15 +48,17 @@ class DecoradoGel : Fragment() {
                 if (!end_data) {
                     val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                     val elemento_final = layoutManager.findLastVisibleItemPosition()
+                    recyclerView.adapter?.let {
+                        when {
+                            elemento_final == it.itemCount - 10 && !loading -> {
 
-                    when {
-                        elemento_final == recyclerView.adapter!!.itemCount - 10 && !loading -> {
-
-                            loading = true
-                            page++
-                            getDataServer()
+                                loading = true
+                                page++
+                                getDataServer()
+                            }
                         }
                     }
+
                 }
             }
         })
@@ -110,7 +114,7 @@ class DecoradoGel : Fragment() {
 
                 for (i in 0 until jsonArray.length()) {
                     val jsonObject = jsonArray.getJSONObject(i)
-                    list_images.add(Utils.DataImages(jsonObject.getString("url"), jsonObject.getString("id")))
+                    list_images.add(DataImages(jsonObject.getString("url"), jsonObject.getString("id")))
                 }
             }
 
@@ -121,12 +125,17 @@ class DecoradoGel : Fragment() {
             super.onPostExecute(result)
 
             if (loading) {
-                recyclerView_gel.adapter!!.notifyDataSetChanged()
+                recyclerView_gel.adapter?.notifyDataSetChanged()
                 loading = false
 
             } else {
-                recyclerView_gel.layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.VERTICAL, false)
-                recyclerView_gel.adapter = Utils.AdapterRecyclerImages(list_images, activity!!)
+                activity?.let {
+                    recyclerView_gel.layoutManager = LinearLayoutManager(it, LinearLayoutManager.VERTICAL, false)
+                    recyclerView_gel.adapter = ImagesAdapter(list_images,it){
+
+                    }
+                }
+
             }
             MainActivity.progressbar.visibility = View.GONE
         }

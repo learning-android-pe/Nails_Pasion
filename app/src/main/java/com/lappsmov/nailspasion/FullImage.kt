@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider.getUriForFile
 import com.bumptech.glide.Glide
+import com.lappsmov.nailspasion.model.DataImages
 import kotlinx.android.synthetic.main.activity_full_image.*
 import kotlinx.coroutines.runBlocking
 import uk.co.senab.photoview.PhotoViewAttacher
@@ -26,7 +27,7 @@ import java.net.URL
 class FullImage : AppCompatActivity() {
 
     companion object {
-        lateinit var image: Utils.DataImages
+        lateinit var image: DataImages
         var activity_fav = false
         var hizo_cambios = false
         var pos = 0
@@ -36,8 +37,8 @@ class FullImage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_full_image)
         setSupportActionBar(toolbar_full_image)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = getString(R.string.title_details)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.title_details)
 
         Glide.with(this@FullImage).load(image.url_img).into(img_full)
 

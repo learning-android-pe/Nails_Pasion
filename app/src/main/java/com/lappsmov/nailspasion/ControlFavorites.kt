@@ -5,6 +5,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.lappsmov.nailspasion.model.DataImages
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
@@ -23,9 +24,9 @@ class ControlFavorites {
         }
     }
 
-    var list_favorites = ArrayList<Utils.DataImages>()
+    var list_favorites = ArrayList<DataImages>()
 
-    suspend fun readFavorites(only_ids: Boolean): ArrayList<Utils.DataImages>? {
+    suspend fun readFavorites(only_ids: Boolean): ArrayList<DataImages>? {
 
         if (verificyExistFavFile()) {
 
@@ -43,7 +44,7 @@ class ControlFavorites {
                     if (only_ids) {
                         ids_favoritos.add(jsonObject.getString("id").toInt())
                     } else {
-                        list_favorites.add(Utils.DataImages(jsonObject.getString("url_img"), jsonObject.getString("id")))
+                        list_favorites.add(DataImages(jsonObject.getString("url_img"), jsonObject.getString("id")))
                         ids_favoritos.add(jsonObject.getString("id").toInt())
                     }
                 }
@@ -76,13 +77,13 @@ class ControlFavorites {
         } else {
 
             ids_favoritos.add(FullImage.image.id.toInt())
-            list_favorites.add(Utils.DataImages(FullImage.image.url_img, FullImage.image.id))
+            list_favorites.add(DataImages(FullImage.image.url_img, FullImage.image.id))
             escribirArchivoFav(list_favorites)
             Toast.makeText(context, context.getString(R.string.add_favorites), Toast.LENGTH_LONG).show()
         }
     }
 
-    suspend fun escribirArchivoFav(datos: ArrayList<Utils.DataImages>) {
+    suspend fun escribirArchivoFav(datos: ArrayList<DataImages>) {
 
         delay(0)
         val jsonArray = JSONArray()

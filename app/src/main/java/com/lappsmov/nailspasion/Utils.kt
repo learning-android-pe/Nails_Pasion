@@ -14,16 +14,14 @@ import androidx.core.util.Pair
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.lappsmov.nailspasion.model.DataImages
 import kotlinx.android.synthetic.main.cv_imagen.view.*
 
 class Utils {
 
-    class DataFragment(val fragment: Fragment, val title: String)
-    class DataImages(val url_img: String, val id: String)
-
     val url_server = "https://nailspasion.com/app"
 
-    fun createDialog(context: Context, layout: Int, cancelable: Boolean): Dialog {
+    /*fun createDialog(context: Context, layout: Int, cancelable: Boolean): Dialog {
 
         val dialog = Dialog(context, R.style.my_dialog_theme)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -31,10 +29,10 @@ class Utils {
         dialog.setContentView(view)
         dialog.setCancelable(cancelable)
         return dialog
-    }
+    }*/
 
     //ADAPTER PARA RECYCLERVIEW
-    class AdapterRecyclerImages(val items: ArrayList<DataImages>, val context: Context) : RecyclerView.Adapter<AdapterRecyclerImages.ViewHolder>() {
+    /*class AdapterRecyclerImages(val items: ArrayList<DataImages>, val context: Context) : RecyclerView.Adapter<AdapterRecyclerImages.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
             ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.cv_imagen, parent, false))
 
@@ -66,5 +64,5 @@ class Utils {
 
             }
         }
-    }
+    }*/
 }

@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.lappsmov.nailspasion.Fragments.DecoradoConvencional
 import com.lappsmov.nailspasion.Fragments.DecoradoGel
+import com.lappsmov.nailspasion.model.DataFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -68,11 +69,11 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId) {
             R.id.favorites -> {
-                startActivity(Intent(this, Favorites::class.java))
+                startActivity(Intent(this, FavoritesActivity::class.java))
                 return true // ENVIAR A FAVORITOS
             }
             R.id.settings -> {
-                startActivity(Intent(this, Settings::class.java))
+                startActivity(Intent(this, SettingsActivity::class.java))
                 return true // ENVIAR A AJUSTES
             }
             else -> return super.onOptionsItemSelected(item)
@@ -82,14 +83,14 @@ class MainActivity : AppCompatActivity() {
     // ADAPTER PARA VIEWPAGER
     class AdapterFragmentPager(manager: FragmentManager) : FragmentPagerAdapter(manager) {
 
-        val my_fragment_list = ArrayList<Utils.DataFragment>()
+        val my_fragment_list = ArrayList<DataFragment>()
 
         override fun getItem(position: Int): Fragment = my_fragment_list[position].fragment
 
         override fun getCount(): Int = my_fragment_list.size
 
         fun addFragment(fragment: Fragment, title: String) =
-            my_fragment_list.add(Utils.DataFragment(fragment, title))
+            my_fragment_list.add(DataFragment(fragment, title))
 
         override fun getPageTitle(position: Int): CharSequence? {
             return my_fragment_list[position].title

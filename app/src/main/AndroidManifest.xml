@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:name=".NailApplication"
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -22,7 +23,7 @@
             android:name=".FullImage"
             android:theme="@style/AppTheme.fullImage"></activity>
         <activity
-            android:name=".Settings"
+            android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme2">
             <meta-data
@@ -30,7 +31,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".Favorites"
+            android:name=".FavoritesActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme2">
             <meta-data

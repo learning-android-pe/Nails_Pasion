@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="10dp"
-        tools:context=".Settings">
+        tools:context=".SettingsActivity">
 
         <LinearLayout
             style="@style/btn_ajustes"
