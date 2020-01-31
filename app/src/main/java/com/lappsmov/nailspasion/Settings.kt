@@ -93,7 +93,7 @@ class Settings : AppCompatActivity() {
             }
         }
 
-        request.retryPolicy = DefaultRetryPolicy()
+        request.retryPolicy = DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(request)
 
         return rps
