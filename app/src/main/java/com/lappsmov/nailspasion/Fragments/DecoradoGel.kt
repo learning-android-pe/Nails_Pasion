@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.DefaultRetryPolicy
@@ -41,6 +42,7 @@ class DecoradoGel : Fragment() {
         val view = inflater.inflate(R.layout.fragment_decorado_gel, container, false)
 
         recyclerView_gel = view.recycler_gel
+        recyclerView_gel.layoutManager = GridLayoutManager(activity,1)
         recyclerView_gel.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)

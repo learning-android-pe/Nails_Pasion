@@ -46,6 +46,8 @@ class DecoradoConvencional : Fragment() {
 
         queue = Volley.newRequestQueue(activity)
         recyclerView_convencional = view_root.recycler_convencional
+        recyclerView_convencional.layoutManager = GridLayoutManager(activity,1)
+
         recyclerView_convencional.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
