@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        tools:context=".Settings">
+
+        <LinearLayout
+            style="@style/btn_ajustes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/title_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/compartir" />
+
+            <TextView
+                android:id="@+id/expli_compartir_app"
+                style="@style/expli_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Se configura en el archivo KT para concatenas varios textos" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/btn_ajustes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_validation"
+                style="@style/title_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/validacion" />
+
+            <EditText
+                android:id="@+id/et_validation"
+                style="@style/expli_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_validation"
+                android:layout_toStartOf="@+id/btn_validate"
+                android:layout_toLeftOf="@+id/btn_validate"
+                android:inputType="numberPassword" />
+
+            <ImageView
+                android:id="@+id/btn_validate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:src="@drawable/arrow_right_bold_circle"
+                android:tint="@color/colorAccent"
+                tools:ignore="UnusedAttribute" />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/tag_ajustes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/legal" />
+
+        <LinearLayout
+            style="@style/btn_ajustes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/title_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/politicas_de_privacidad" />
+
+            <TextView
+                style="@style/expli_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/expli_politicas" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/btn_ajustes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/title_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/consentimiento_de_anuncios" />
+
+            <TextView
+                style="@style/expli_ajustes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/expli_consent_ads" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

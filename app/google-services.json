@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "783574108827",
+    "firebase_url": "https://nails-pasion.firebaseio.com",
+    "project_id": "nails-pasion",
+    "storage_bucket": "nails-pasion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783574108827:android:de40c5ff8e20b7327b943e",
+        "android_client_info": {
+          "package_name": "com.lappsmov.nailspasion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783574108827-qlh4q76hcb2e730sv2nk390spk8tfc13.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lappsmov.nailspasion",
+            "certificate_hash": "da86b6bdb8bbe13dbe766e71c710055fc8ee54d7"
+          }
+        },
+        {
+          "client_id": "783574108827-6q1ugigomeftipo8or6orok839plnbpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCByRrueRRNoKJHB_J8Ao8ph8nxt5A7QeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783574108827-6q1ugigomeftipo8or6orok839plnbpc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

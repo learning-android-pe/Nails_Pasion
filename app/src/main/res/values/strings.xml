@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Pasion Nails</string>
+    <string name="decorado_convencional">Decorado Convencional</string>
+    <string name="decorado_gel">Decorado en Gel</string>
+    <string name="llegamos_al_final">Hemos llegado al final !!</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="favorites">Favoritos</string>
+    <string name="cerrar">cerrar</string>
+    <string name="compartir">Compartir</string>
+    <string name="agregar_a_favoritos">agregar a favoritos</string>
+    <string name="title_details">Detalles de decorado</string>
+    <string name="add_favorites">Se agrego este decorado a favoritos</string>
+    <string name="del_favorites">Se elimino este decorado de favoritos</string>
+    <string name="share_decorado">Compartir decorado con:</string>
+    <string name="share_text">Increible decorado que encontre en esta aplicacion</string>
+    <string name="recomiendo">Te la recomiendo !!</string>
+    <string name="toast_compartiendo">Estamos preparando todo...</string>
+    <string name="actualizar">actualizar</string>
+    <string name="nueva_version_disponible">Nueva version disponible</string>
+    <string name="msj_actualizar">Trabajamos fuertemente para traerte siempre lo mejor, nos enorgullece traer una nueva version con muchas mejoras. Solamente debes tocar al boton actualizar y listo</string>
+    <string name="legal">Legal</string>
+    <string name="politicas_de_privacidad">Politicas de privacidad</string>
+    <string name="expli_politicas">informacion sobre datos recopilados por la empresa, sus destinos y la proteccion hacia el usuario</string>
+    <string name="consentimiento_de_anuncios">Consentimiento de anuncios</string>
+    <string name="expli_consent_ads">revocar o aceptar el consentimiento de anuncios personalizados (EEA)</string>
+    <string name="shared_with_friends">con tus amistades</string>
+    <string name="validacion">Validacion</string>
+    <string name="validation">Debes ingresar el codigo de validacion</string>
+    <string name="entendido">entendido</string>
+    <string name="validando">Estamos validando la informacion en la base de datos....</string>
+    <string name="validation_ok">El codigo ingresado es correcto, ahora disfrutaras de la version sin anuncios. Toca a entendido para reinicar la aplicacion.</string>
+    <string name="validation_failed">No fue posible llevar a cabo la validacion.</string>
+
+</resources>
